@@ -61,6 +61,7 @@ public class BuyExtraCommand extends BasicArmCommand {
                 throw new InputException(player, Messages.NOT_ENOUGH_MONEY);
             }
             getPlugin().getEcon().withdrawPlayer(player, region.getEntityLimitGroup().getPricePerExtraEntity());
+            getPlugin().getEcon().depositPlayer(getPlugin().getTaxPlayer(),  region.getEntityLimitGroup().getPricePerExtraEntity());
             region.setExtraTotalEntitys(region.getExtraTotalEntitys() + 1);
             player.sendMessage(Messages.PREFIX + region.getEntityLimitGroup().replaceVariables(Messages.ENTITYLIMITGROUP_EXTRA_ENTITIES_EXPAND_SUCCESS, entities, region.getExtraTotalEntitys()));
 
@@ -81,6 +82,7 @@ public class BuyExtraCommand extends BasicArmCommand {
                 throw new InputException(player, Messages.NOT_ENOUGH_MONEY);
             }
             getPlugin().getEcon().withdrawPlayer(player, region.getEntityLimitGroup().getPricePerExtraEntity(limitableEntityType));
+            getPlugin().getEcon().depositPlayer(getPlugin().getTaxPlayer(), region.getEntityLimitGroup().getPricePerExtraEntity(limitableEntityType));
             region.setExtraEntityAmount(limitableEntityType, region.getExtraEntityAmount(limitableEntityType) + 1);
             player.sendMessage(Messages.PREFIX + entityLimit.replaceVariables(Messages.ENTITYLIMITGROUP_EXTRA_ENTITIES_EXPAND_SUCCESS, entities, region.getExtraEntityAmount(limitableEntityType)));
         }

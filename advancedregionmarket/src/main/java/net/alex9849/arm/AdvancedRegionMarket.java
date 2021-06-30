@@ -49,6 +49,7 @@ import net.alex9849.pluginstats.client.Analytics;
 import net.alex9849.signs.SignDataFactory;
 import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Bukkit;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.World;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -91,6 +92,7 @@ public class AdvancedRegionMarket extends JavaPlugin {
     private LimitGroupManager limitGroupManager = null;
     private ArmSettings pluginSettings = null;
     private Analytics analytics = null;
+    private OfflinePlayer taxPlayer = Bukkit.getOfflinePlayer(UUID.fromString("2c5f00ba-902c-411b-b9b9-9261cf43aee1"));
 
 
     /*#########################################
@@ -709,6 +711,10 @@ public class AdvancedRegionMarket extends JavaPlugin {
             ConfigurationSection groupSection = getConfig().getConfigurationSection("InactivityExpiration." + groupname);
             InactivityExpirationGroup.add(InactivityExpirationGroup.parse(groupSection, groupname));
         }
+    }
+
+    public OfflinePlayer getTaxPlayer() {
+        return taxPlayer;
     }
 
     private void loadSignLinkingModeRegions() {

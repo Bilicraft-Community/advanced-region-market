@@ -100,6 +100,7 @@ public class ContractRegion extends CountdownRegion {
                                 } else {
                                     if(!isNoMoneyTransfer) {
                                         AdvancedRegionMarket.getInstance().getEcon().withdrawPlayer(oplayer, this.getPricePerPeriod());
+                                        AdvancedRegionMarket.getInstance().getEcon().depositPlayer(AdvancedRegionMarket.getInstance().getTaxPlayer(), this.getPricePerPeriod());
                                         this.giveLandlordMoney(this.getPricePerPeriod());
                                     }
                                     this.extend();

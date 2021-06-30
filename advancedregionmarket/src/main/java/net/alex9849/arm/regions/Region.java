@@ -1048,6 +1048,8 @@ public abstract class Region implements Saveable {
                     throw new NotEnoughMoneyException(this.replaceVariables(Messages.SELLBACK_LANDLORD_NOT_ENOUGH_MONEY));
                 }
                 AdvancedRegionMarket.getInstance().getEcon().withdrawPlayer(Bukkit.getOfflinePlayer(landlord), amount);
+            }else{
+                AdvancedRegionMarket.getInstance().getEcon().withdrawPlayer(AdvancedRegionMarket.getInstance().getTaxPlayer(), amount);
             }
             AdvancedRegionMarket.getInstance().getEcon().depositPlayer(Bukkit.getOfflinePlayer(owner), amount);
         }
